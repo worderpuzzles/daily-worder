@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151515">
+  <meta name="description" content="Play the Daily Worder: a new interactive murder-mystery word-search case every day.">
+  <title>Daily Worder — Crack the Case</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand"><span class="brand-mark">W</span><span>Daily Worder · Crack the Case</span></div>
+      <nav class="top-links" aria-label="Main navigation">
+        <a class="top-link" href="archive.html">Puzzle archive</a>
+        <a class="top-link" href="https://worderpuzzles.com">Worder Puzzles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div id="loading" class="loading">Opening today’s case…</div>
+    <div id="siteNotice" class="site-notice hidden" role="status"></div>
+
+    <div id="puzzleApp" class="hidden">
+      <section class="hero">
+        <p class="eyebrow" id="caseNumber"></p>
+        <h1 id="caseTitle"></h1>
+        <div class="daily-meta">
+          <span id="puzzleDate"></span>
+          <span>Difficulty: <strong id="difficultyLabel"></strong></span>
+        </div>
+        <p class="lede">Search all four locations. The evidence item and suspect found in the same two grids identify the weapon and murderer. Remove words from the circled letters to reveal the victim, then find that name to identify the crime scene.</p>
+      </section>
+
+      <nav class="day-navigation" aria-label="Daily puzzle navigation">
+        <a class="btn btn-secondary" id="previousDay" href="#">← Previous case</a>
+        <a class="btn btn-secondary" href="archive.html">Archive</a>
+        <a class="btn btn-secondary" id="nextDay" href="#">Next case →</a>
+      </nav>
+
+      <section class="stat-strip" aria-label="Daily statistics">
+        <div class="stat"><small>Time</small><strong id="timer">00:00</strong></div>
+        <div class="stat"><small>Current streak</small><strong id="streakCount">0</strong></div>
+        <div class="stat"><small>Status</small><strong id="dailyStatus">In progress</strong></div>
+      </section>
+
+      <section class="statusbar" aria-label="Puzzle progress">
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Checklist discoveries</span><strong id="progressText">0 / 0</strong></div>
+          <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+        </div>
+        <div class="circle-readout">
+          <small>Letters still circled, in reading order</small>
+          <div id="circleLetters" aria-live="polite">—</div>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section>
+          <div id="grids" class="grids" aria-label="Four word-search grids"></div>
+          <p class="selection-help">Drag from the first letter to the last. You can also tap one letter and then tap the final letter.</p>
+        </section>
+
+        <aside class="sidebar">
+          <section class="panel">
+            <h2>Case checklist</h2>
+            <div class="word-groups">
+              <div><h3>Evidence</h3><ul id="evidenceList" class="word-list"></ul></div>
+              <div><h3>Suspects</h3><ul id="suspectList" class="word-list"></ul></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>Detective’s notes</h2>
+            <ul id="notes" class="notes"><li>No repeated discoveries yet.</li></ul>
+          </section>
+
+          <section class="panel" id="solutionPanel">
+            <h2>Solve the case</h2>
+            <div class="answer-grid">
+              <label>Murder weapon<select id="weaponAnswer"></select></label>
+              <label>Murderer<select id="killerAnswer"></select></label>
+              <label>Victim<input id="victimAnswer" type="text" autocomplete="off" placeholder="Enter the name"></label>
+              <label>Crime scene<select id="sceneAnswer"></select></label>
+            </div>
+            <div class="actions">
+              <button class="btn btn-primary" id="checkAnswer" type="button">Check the case</button>
+              <button class="btn btn-secondary" id="shareResult" type="button">Share result</button>
+              <button class="btn btn-secondary" id="resetPuzzle" type="button">Reset</button>
+              <button class="btn btn-danger" id="revealAnswer" type="button">Reveal answer</button>
+            </div>
+            <div id="resultMessage" class="message" aria-live="polite"></div>
+          </section>
+
+          <details class="panel">
+            <summary>How to solve</summary>
+            <ol>
+              <li>Find every listed evidence item and suspect. A word may appear in more than one grid.</li>
+              <li>The evidence item repeated in two grids is the murder weapon.</li>
+              <li>The suspect repeated in those same two grids is the murderer.</li>
+              <li>When a found word contains a circled letter, that circle disappears. Read the circles left after all checklist words are found.</li>
+              <li>Find the victim’s name hidden in one grid. That grid’s location is the crime scene.</li>
+            </ol>
+          </details>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">A new case unlocks each day using UK time.</footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

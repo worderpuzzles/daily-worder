@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151515">
+  <meta name="description" content="Browse previous Daily Worder murder-mystery word-search cases.">
+  <title>Daily Worder Puzzle Archive</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand"><span class="brand-mark">W</span><span>Daily Worder Archive</span></div>
+      <nav class="top-links"><a class="top-link" href="index.html">Today’s puzzle</a><a class="top-link" href="https://worderpuzzles.com">Worder Puzzles</a></nav>
+    </div>
+  </header>
+  <main class="archive-wrap">
+    <section class="hero">
+      <p class="eyebrow">Case files</p>
+      <h1>Puzzle Archive</h1>
+      <p class="lede">Revisit earlier cases. Future cases remain locked until their UK publication date.</p>
+    </section>
+    <div id="archiveNotice" class="site-notice hidden"></div>
+    <div id="archiveGrid" class="archive-grid"><div class="loading">Opening the case files…</div></div>
+  </main>
+  <footer class="footer">Your completed cases are stored only in this browser.</footer>
+  <script src="archive.js" defer></script>
+</body>
+</html>
